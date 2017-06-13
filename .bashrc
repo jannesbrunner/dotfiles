@@ -122,8 +122,8 @@ export PS1="[\u@\h]\w > \[$(tput sgr0)\]"
 alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
 alias db='cd /mnt/c/Users/info_000/Dropbox/'
 alias od='cd /mnt/c/Users//info_000/OneDrive/'
-alias htw='cd /mnt/c/Users/info_000/OneDrive/HTW/Semester3'
-alias wpd='cd /mnt/c/Users/info_000/Documents/WORKPLACE'
+alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester4'
+alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
 alias home="cd ~"
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
