@@ -3,3 +3,5 @@
 	name = jannesbrunner
 [push]
 	default = matching
+[core]
+	whitespace = cr-at-eol
