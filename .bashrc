@@ -224,6 +224,7 @@ fi)'
 
 # Shortcuts
 alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
+alias home="cd ~"
 
 # System specific
 if [ $HOSTNAME == 'JB-ThinkPad' ]; then
@@ -232,7 +233,14 @@ if [ $HOSTNAME == 'JB-ThinkPad' ]; then
     alias od='cd /mnt/c/Users//info_000/OneDrive/'
     alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester4'
     alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
-    alias home="cd ~"
+    
+elif [ $HOSTNAME == 'JB-Desktop' ]; then
+   echo $USER @ $HOSTNAME Setup 
+   alias db='cd /mnt/d/Dropbox/'
+   alias od='cd /mnt/d/OneDrive/'
+   alias htw='cd /mnt/d/Dropbox/HTW/Semester4'
+   alias wpd='cd /mnt/d/Dropbox/projekte/'
+    	
 else 
     echo This machine is unknown. Some shortcuts might not work.
 fi
