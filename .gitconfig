@@ -5,3 +5,5 @@
 	default = matching
 [core]
 	whitespace = cr-at-eol
+[alias]
+	lo = log --oneline --graph

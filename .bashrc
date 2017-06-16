@@ -226,6 +226,7 @@ fi)'
 alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
 alias home="cd ~"
 
+
 # System specific
 if [ $HOSTNAME == 'JB-ThinkPad' ]; then
     echo $USER @ $HOSTNAME Setup
