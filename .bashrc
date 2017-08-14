@@ -206,8 +206,8 @@ On_IWhite="\[\033[0;107m\]"   # White
 # Various variables you might want for your PS1 prompt instead
 Time12h="\T"
 Time12a="\@"
-PathShort="\w"
-PathFull="\W"
+PathShort="\W"
+PathFull="\w"
 NewLine="\n"
 Jobs="\j"
 
@@ -224,11 +224,14 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BYellow$PathShort$Color_Off'\n\$ "; \
+  fi) '$BYellow$PathFull$Color_Off'\n\$ "; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\n\$ "; \
+  echo " '$Yellow$PathFull$Color_Off'\n\$ "; \
 fi)'
+
+# For shortcutting the dir display
+PROMPT_DIRTRIM=3 
 
 # Shortcuts
 alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
@@ -260,3 +263,7 @@ alias config='git --git-dir=/home/jay/.cfg/ --work-tree=/home/jay'
 
 # Set bash language to English
 export LANG=en_US.UTF-8
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
