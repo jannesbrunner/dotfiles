@@ -7,3 +7,4 @@
 	whitespace = cr-at-eol
 [alias]
 	lo = log --oneline --graph
+	ss = status --short
