@@ -1,2 +1,2 @@
 setlocal tabstop=2
-setlocla shiftwidth=2
+setlocal shiftwidth=2
