@@ -236,7 +236,7 @@ PROMPT_DIRTRIM=3
 # Shortcuts
 alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
 alias home="cd ~"
-
+alias lst="tree -L 1"
 
 # System specific
 if [ $HOSTNAME == 'JB-ThinkPad' ]; then
