@@ -253,8 +253,17 @@ elif [ $HOSTNAME == 'JB-Desktop' ]; then
    alias htw='cd /mnt/d/Dropbox/HTW/Semester4'
    alias wpd='cd /mnt/d/Dropbox/projekte/'
     	
-else 
-    echo This machine is unknown. Some shortcuts might not work.
+elif [ $HOSTNAME == 'jbx1carbon' ]; then
+   echo $USER @ $HOSTNAME Setup
+   alias db='cd $HOME/Dropbox'
+   alias od='no One Drive installed yet'
+   alias htw='cd $HOME/Dropbox/HTW/Semester4'
+   alias wpd='cd $HOME/Dropbox/projekte/'
+   source /usr/share/git-core/contrib/completion/git-prompt.sh
+
+else
+   echo This machine is unknown. Some shortcuts might not work.
+
 fi
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
