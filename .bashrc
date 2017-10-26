@@ -234,25 +234,26 @@ fi)'
 PROMPT_DIRTRIM=3 
 
 # Shortcuts
-alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
 alias home="cd ~"
 alias lst="tree -L 1"
 
 # System specific
 if [ $HOSTNAME == 'JB-ThinkPad' ]; then
-    echo $USER @ $HOSTNAME Setup
-    alias db='cd /mnt/c/Users/info_000/Dropbox/'
-    alias od='cd /mnt/c/Users//info_000/OneDrive/'
-    alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester4'
-    alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
-    
+   echo $USER @ $HOSTNAME Setup
+   alias db='cd /mnt/c/Users/info_000/Dropbox/'
+   alias od='cd /mnt/c/Users//info_000/OneDrive/'
+   alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester4'
+   alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
+   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'     
+
 elif [ $HOSTNAME == 'JB-Desktop' ]; then
    echo $USER @ $HOSTNAME Setup 
    alias db='cd /mnt/d/Dropbox/'
    alias od='cd /mnt/d/OneDrive/'
    alias htw='cd /mnt/d/Dropbox/HTW/Semester4'
    alias wpd='cd /mnt/d/Dropbox/projekte/'
-    	
+   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'  
+  	
 elif [ $HOSTNAME == 'jbx1carbon' ]; then
    echo $USER @ $HOSTNAME Setup
    alias db='cd $HOME/Dropbox'
@@ -260,6 +261,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias htw='cd $HOME/Dropbox/HTW/Semester4'
    alias wpd='cd $HOME/Dropbox/projekte/'
    source /usr/share/git-core/contrib/completion/git-prompt.sh
+   alias checkupdates='sudo dnf update && sudo dnf upgrade'   
 
 else
    echo This machine is unknown. Some shortcuts might not work.
@@ -275,4 +277,11 @@ export LANG=en_US.UTF-8
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Add Android tools to Path
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Add JDK to Path
 
