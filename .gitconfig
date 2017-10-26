@@ -8,3 +8,17 @@
 [alias]
 	lo = log --oneline --graph
 	ss = status --short
+	
+[credential]
+	helper = cache
+[merge]
+	tool = meld
+
+[mergetool "meld"]
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+
+[difftool]
+	prompt = false
+
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
