@@ -9,7 +9,8 @@
 	lo = log --oneline --graph
 	ss = status --short
 	dt = difftool
-	mt = mergetool	
+	mt = mergetool
+	syncb = remote update --prune	
 [credential]
 	helper = cache
 [merge]
