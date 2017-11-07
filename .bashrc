@@ -242,7 +242,7 @@ if [ $HOSTNAME == 'JB-ThinkPad' ]; then
    echo $USER @ $HOSTNAME Setup
    alias db='cd /mnt/c/Users/info_000/Dropbox/'
    alias od='cd /mnt/c/Users//info_000/OneDrive/'
-   alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester4'
+   alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester5'
    alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'     
 
@@ -250,7 +250,7 @@ elif [ $HOSTNAME == 'JB-Desktop' ]; then
    echo $USER @ $HOSTNAME Setup 
    alias db='cd /mnt/d/Dropbox/'
    alias od='cd /mnt/d/OneDrive/'
-   alias htw='cd /mnt/d/Dropbox/HTW/Semester4'
+   alias htw='cd /mnt/d/Dropbox/HTW/Semester5'
    alias wpd='cd /mnt/d/Dropbox/projekte/'
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'  
   	
@@ -258,7 +258,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    echo $USER @ $HOSTNAME Setup
    alias db='cd $HOME/Dropbox'
    alias od='no One Drive installed yet'
-   alias htw='cd $HOME/Dropbox/HTW/Semester4'
+   alias htw='cd $HOME/Dropbox/HTW/Semester5'
    alias wpd='cd $HOME/Dropbox/projekte/'
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
