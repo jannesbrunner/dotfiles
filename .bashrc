@@ -262,7 +262,8 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias wpd='cd $HOME/Dropbox/projekte/'
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
-
+   alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
+   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 0.8'	
 else
    echo This machine is unknown. Some shortcuts might not work.
 
