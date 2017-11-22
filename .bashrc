@@ -263,7 +263,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
-   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 0.8'	
+   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'	
 else
    echo This machine is unknown. Some shortcuts might not work.
 
