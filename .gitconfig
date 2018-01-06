@@ -10,7 +10,10 @@
 	ss = status --short
 	dt = difftool
 	mt = mergetool
-	syncb = remote update --prune	
+	syncr = remote update --prune
+	fetcha = fetch --all --prune
+	branchvv = branch -vv
+	sut = --set-upstream-to	
 [credential]
 	helper = cache
 [merge]
