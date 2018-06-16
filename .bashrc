@@ -246,24 +246,21 @@ alias rnl="react-native log-android"
 
 
 # System specific
-if [ $HOSTNAME == 'JB-ThinkPad' ]; then
-   echo $USER @ $HOSTNAME Setup
-   alias db='cd /mnt/c/Users/info_000/Dropbox/'
-   alias od='cd /mnt/c/Users//info_000/OneDrive/'
-   alias htw='cd /mnt/c/Users/info_000/Dropbox/HTW/Semester5'
-   alias wpd='cd /mnt/c/Users/info_000/Dropbox/projekte'
+if [ $HOSTNAME == 'v22018035923162686' ]; then
+   echo $USER @ $HOSTNAME 
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'     
 
 elif [ $HOSTNAME == 'JB-Desktop' ]; then
-   echo $USER @ $HOSTNAME Setup 
+   echo $USER @ $HOSTNAME 
    alias db='cd /mnt/d/Dropbox/'
    alias od='cd /mnt/d/OneDrive/'
    alias htw='cd /mnt/d/Dropbox/HTW/Semester5'
    alias wpd='cd /mnt/d/Dropbox/projekte/'
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'  
+   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'    	
   	
+
 elif [ $HOSTNAME == 'jbx1carbon' ]; then
-   echo $USER @ $HOSTNAME Setup
+   echo $USER @ $HOSTNAME
    alias db='cd $HOME/Dropbox'
    alias od='no One Drive installed yet'
    alias htw='cd $HOME/Dropbox/HTW/Semester5'
@@ -280,7 +277,7 @@ fi
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-alias config='git --git-dir=/home/jay/.cfg/ --work-tree=/home/jay'
+  alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Set bash language to English
 export LANG=en_US.UTF-8
