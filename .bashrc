@@ -261,18 +261,31 @@ elif [ $HOSTNAME == 'JB-Desktop' ]; then
 
 elif [ $HOSTNAME == 'jbx1carbon' ]; then
    echo $USER @ $HOSTNAME
+   
+   # Aliases
    alias db='cd $HOME/Dropbox'
    alias od='no One Drive installed yet'
    alias htw='cd $HOME/Dropbox/HTW/Semester5'
    alias wpd='cd $HOME/Dropbox/projekte/'
    alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
-   source /usr/share/git-core/contrib/completion/git-prompt.sh
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
-   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'	
+   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
+   # Git Prompt
+   source /usr/share/git-core/contrib/completion/git-prompt.sh
+   
+   ### Path ###
+   # Add Android tools to Path
+   export ANDROID_HOME=$HOME/Android/Sdk
+   export PATH=$PATH:$ANDROID_HOME/tools
+   export PATH=$PATH:$ANDROID_HOME/platform-tools
+   # Add Python Anaconda to Path
+   export PATH=/home/jay/apps/anaconda3/bin:$PATH
+   # Add RVM to PATH for scripting. (Ruby Version management)
+   export PATH="$PATH:$HOME/.rvm/bin"
+   
 else
-   echo This machine is unknown. Some shortcuts might not work.
-
+   echo This machine is unknown.
 fi
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
@@ -282,16 +295,7 @@ fi
 # Set bash language to English
 export LANG=en_US.UTF-8
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
-# Add Android tools to Path
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# Add Python Anaconda to Path
-export PATH=/home/jay/apps/anaconda3/bin:$PATH
 
-# Add JDK to Path
 
