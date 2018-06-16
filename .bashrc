@@ -236,7 +236,6 @@ PROMPT_DIRTRIM=3
 # Shortcuts
 alias home="cd ~"
 alias lst="tree -L 1"
-alias androidstudio="cd $HOME && xhost + && sudo apps/android-studio/bin/studio.sh"
 alias sudo="sudo "
 
 ## react-native
@@ -245,7 +244,7 @@ alias rna="react-native run-android"
 alias rnl="react-native log-android"
 
 
-# System specific
+## System specific
 if [ $HOSTNAME == 'v22018035923162686' ]; then
    echo $USER @ $HOSTNAME 
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'     
@@ -263,10 +262,12 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    echo $USER @ $HOSTNAME
    
    # Aliases
+   alias androidstudio="cd $HOME && xhost + && sudo apps/android-studio/bin/studio.sh"
    alias db='cd $HOME/Dropbox'
    alias od='no One Drive installed yet'
-   alias htw='cd $HOME/Dropbox/HTW/Semester5'
-   alias wpd='cd $HOME/Dropbox/projekte/'
+   alias cloud ='cd $HOME/Nextcloud'
+   alias htw='cd $HOME/Nextcloud/Uni'
+   alias projects='cd $HOME/Nextcloud/projekte/'
    alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
