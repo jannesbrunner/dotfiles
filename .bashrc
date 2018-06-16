@@ -236,6 +236,14 @@ PROMPT_DIRTRIM=3
 # Shortcuts
 alias home="cd ~"
 alias lst="tree -L 1"
+alias androidstudio="cd $HOME && xhost + && sudo apps/android-studio/bin/studio.sh"
+alias sudo="sudo "
+
+## react-native
+alias rns="react-native start"
+alias rna="react-native run-android"
+alias rnl="react-native log-android"
+
 
 # System specific
 if [ $HOSTNAME == 'JB-ThinkPad' ]; then
@@ -260,6 +268,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias od='no One Drive installed yet'
    alias htw='cd $HOME/Dropbox/HTW/Semester5'
    alias wpd='cd $HOME/Dropbox/projekte/'
+   alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
