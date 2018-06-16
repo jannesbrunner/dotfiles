@@ -290,5 +290,8 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# Add Python Anaconda to Path
+export PATH=/home/jay/apps/anaconda3/bin:$PATH
+
 # Add JDK to Path
 
