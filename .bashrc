@@ -265,7 +265,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias androidstudio="cd $HOME && xhost + && sudo apps/android-studio/bin/studio.sh"
    alias db='cd $HOME/Dropbox'
    alias od='no One Drive installed yet'
-   alias cloud ='cd $HOME/Nextcloud'
+   alias cloud='cd $HOME/Nextcloud'
    alias htw='cd $HOME/Nextcloud/Uni'
    alias projects='cd $HOME/Nextcloud/projekte/'
    alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
