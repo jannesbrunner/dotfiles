@@ -247,7 +247,9 @@ alias rnl="react-native log-android"
 ## System specific
 if [ $HOSTNAME == 'v22018035923162686' ]; then
    echo $USER @ $HOSTNAME 
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'     
+   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
+   alias dailylog='sudo logwatch --detail low --range today'
+   alias weeklylog='sudo logwatch --detail low --range "-7 days"'     
 
 elif [ $HOSTNAME == 'JB-Desktop' ]; then
    echo $USER @ $HOSTNAME 
