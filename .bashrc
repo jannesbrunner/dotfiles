@@ -245,7 +245,7 @@ alias rnl="react-native log-android"
 
 
 ## System specific
-if [ $HOSTNAME == 'v22018035923162686' ]; then
+if [ $HOSTNAME == 'v22018035923162686.powersrv.de' ]; then
    echo $USER @ $HOSTNAME 
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
    alias dailylog='sudo logwatch --detail low --range today'
