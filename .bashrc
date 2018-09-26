@@ -278,6 +278,11 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
    alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
+   
+   # Berlinale
+   alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/bb/Documents/berlinale/git/fms-ui'
+   alias fmsui-stop='ngix -s stop'
+
    # Git Prompt
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    
