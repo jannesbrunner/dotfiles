@@ -123,131 +123,80 @@ if ! shopt -oq posix; then
   fi
 fi
 
-## Personal config for the bash
+## Personal config for the bash ##
 
-#  Customize BASH PS1 prompt to show current GIT repository and branch.
-#  by Mike Stewart - http://MediaDoneRight.com
+# PS1 Settings
 
-#  SETUP CONSTANTS
-#  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
-#  I don't remember where I found this.  o_O
+prompt_command () {
+    if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
+        ERRPROMPT=" "
+    else
+        ERRPROMPT='->($?) '
+    fi
+    if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
+        BRANCH="\$(__git_ps1 '[ %s ] ')"
+    fi
+    local TIME=`fmt_time` # format time for prompt string
+    local LOAD=`uptime|awk '{min=NF-2;print $min}'`
+    local GREEN="\[\033[0;32m\]"
+    local CYAN="\[\033[0;36m\]"
+    local BCYAN="\[\033[1;36m\]"
+    local BLUE="\[\033[0;34m\]"
+    local GRAY="\[\033[0;37m\]"
+    local DKGRAY="\[\033[1;30m\]"
+    local WHITE="\[\033[1;37m\]"
+    local RED="\[\033[0;31m\]"
+    # return color to Terminal setting for text color
+    local DEFAULT="\[\033[0;39m\]"
+    # set the titlebar to the last 2 fields of pwd
+    local TITLEBAR='\[\e]2;`pwdtail`\a'
+    export PS1="\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
+\h${DKGRAY}(${LOAD}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
+\w\n${GREEN}${BRANCH}${DEFAULT}$ "
+}
+PROMPT_COMMAND=prompt_command
 
-# Reset
-Color_Off="\[\033[0m\]"       # Text Reset
+fmt_time () { #format time just the way I likes it
+    if [ `date +%p` = "PM" ]; then
+        meridiem="pm"
+    else
+        meridiem="am"
+    fi
+    date +"%l:%M:%S$meridiem"|sed 's/ //g'
+}
+pwdtail () { #returns the last 2 fields of the working directory
+    pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
+}
+chkload () { #gets the current 1m avg CPU load
+    local CURRLOAD=`uptime|awk '{print $8}'`
+    if [ "$CURRLOAD" > "1" ]; then
+        local OUTP="HIGH"
+    elif [ "$CURRLOAD" < "1" ]; then
+        local OUTP="NORMAL"
+    else
+        local OUTP="UNKNOWN"
+    fi
+    echo $CURRLOAD
+}
 
-# Regular Colors
-Black="\[\033[0;30m\]"        # Black
-Red="\[\033[0;31m\]"          # Red
-Green="\[\033[0;32m\]"        # Green
-Yellow="\[\033[0;33m\]"       # Yellow
-Blue="\[\033[0;34m\]"         # Blue
-Purple="\[\033[0;35m\]"       # Purple
-Cyan="\[\033[0;36m\]"         # Cyan
-White="\[\033[0;37m\]"        # White
-
-# Bold
-BBlack="\[\033[1;30m\]"       # Black
-BRed="\[\033[1;31m\]"         # Red
-BGreen="\[\033[1;32m\]"       # Green
-BYellow="\[\033[1;33m\]"      # Yellow
-BBlue="\[\033[1;34m\]"        # Blue
-BPurple="\[\033[1;35m\]"      # Purple
-BCyan="\[\033[1;36m\]"        # Cyan
-BWhite="\[\033[1;37m\]"       # White
-
-# Underline
-UBlack="\[\033[4;30m\]"       # Black
-URed="\[\033[4;31m\]"         # Red
-UGreen="\[\033[4;32m\]"       # Green
-UYellow="\[\033[4;33m\]"      # Yellow
-UBlue="\[\033[4;34m\]"        # Blue
-UPurple="\[\033[4;35m\]"      # Purple
-UCyan="\[\033[4;36m\]"        # Cyan
-UWhite="\[\033[4;37m\]"       # White
-
-# Background
-On_Black="\[\033[40m\]"       # Black
-On_Red="\[\033[41m\]"         # Red
-On_Green="\[\033[42m\]"       # Green
-On_Yellow="\[\033[43m\]"      # Yellow
-On_Blue="\[\033[44m\]"        # Blue
-On_Purple="\[\033[45m\]"      # Purple
-On_Cyan="\[\033[46m\]"        # Cyan
-On_White="\[\033[47m\]"       # White
-
-# High Intensty
-IBlack="\[\033[0;90m\]"       # Black
-IRed="\[\033[0;91m\]"         # Red
-IGreen="\[\033[0;92m\]"       # Green
-IYellow="\[\033[0;93m\]"      # Yellow
-IBlue="\[\033[0;94m\]"        # Blue
-IPurple="\[\033[0;95m\]"      # Purple
-ICyan="\[\033[0;96m\]"        # Cyan
-IWhite="\[\033[0;97m\]"       # White
-
-# Bold High Intensty
-BIBlack="\[\033[1;90m\]"      # Black
-BIRed="\[\033[1;91m\]"        # Red
-BIGreen="\[\033[1;92m\]"      # Green
-BIYellow="\[\033[1;93m\]"     # Yellow
-BIBlue="\[\033[1;94m\]"       # Blue
-BIPurple="\[\033[1;95m\]"     # Purple
-BICyan="\[\033[1;96m\]"       # Cyan
-BIWhite="\[\033[1;97m\]"      # White
-
-# High Intensty backgrounds
-On_IBlack="\[\033[0;100m\]"   # Black
-On_IRed="\[\033[0;101m\]"     # Red
-On_IGreen="\[\033[0;102m\]"   # Green
-On_IYellow="\[\033[0;103m\]"  # Yellow
-On_IBlue="\[\033[0;104m\]"    # Blue
-On_IPurple="\[\033[10;95m\]"  # Purple
-On_ICyan="\[\033[0;106m\]"    # Cyan
-On_IWhite="\[\033[0;107m\]"   # White
-
-# Various variables you might want for your PS1 prompt instead
-Time12h="\T"
-Time12a="\@"
-PathShort="\W"
-PathFull="\w"
-NewLine="\n"
-Jobs="\j"
-
-
-# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
-# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
-
-export PS1=$IBlack$Time12h$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [ "$?" -eq "0" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BYellow$PathFull$Color_Off'\n\$ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathFull$Color_Off'\n\$ "; \
-fi)'
 
 # For shortcutting the dir display
 PROMPT_DIRTRIM=3 
 
-# Shortcuts
+## Shortcuts
 alias home="cd ~"
 alias lst="tree -L 1"
 alias sudo="sudo "
 
-## react-native
+# react-native
 alias rns="react-native start"
 alias rna="react-native run-android"
 alias rnl="react-native log-android"
 
 
-## System specific
-if [ $HOSTNAME == 'v22018035923162686.powersrv.de' ]; then
+## Shortcuts System Specific
+
+if [ $HOSTNAME == 'v22018035923162686' ]; then
    echo $USER @ $HOSTNAME 
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
    alias dailylog='sudo logwatch --detail low --range today'
