@@ -1,9 +1,12 @@
 # Enable tmux
-if command -v tmux>/dev/null; then
+if [ $HOSTNAME != 'jbx1carbon' ]; then
+    if command -v tmux>/dev/null; then
         if [ ! -z "$PS1" ]; then # unless shell not loaded interactively, run tmux
                 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
         fi
+    fi
 fi
+
 
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -224,6 +227,11 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
    alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
+   
+   # Berlinale
+   alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
+   alias fmsui-stop='nginx -s stop'
+
    # Git Prompt
    source /usr/share/git-core/contrib/completion/git-prompt.sh
    
