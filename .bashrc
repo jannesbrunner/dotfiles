@@ -1,11 +1,10 @@
 # Enable tmux
-if [ $HOSTNAME != 'jbx1carbon' ]; then
-    if command -v tmux>/dev/null; then
-        if [ ! -z "$PS1" ]; then # unless shell not loaded interactively, run tmux
+if command -v tmux>/dev/null; then
+    if [ ! -z "$PS1" ]; then # unless shell not loaded interactively, run tmux
                 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
-        fi
     fi
-fi
+ fi
+
 
 
 
