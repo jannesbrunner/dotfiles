@@ -125,17 +125,15 @@ fi
 
 ## Personal config for the bash ##
 
-# PS1 Settings
-
+# PS1 Settings 
 prompt_command () {
     if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
         ERRPROMPT=" "
     else
         ERRPROMPT='->($?) '
     fi
-    if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
-        BRANCH="\$(__git_ps1 '[ %s ] ')"
-    fi
+    
+    local git_status="$(git status 2> /dev/null)"
     local TIME=`fmt_time` # format time for prompt string
     local LOAD=`uptime|awk '{min=NF-2;print $min}'`
     local GREEN="\[\033[0;32m\]"
@@ -146,23 +144,35 @@ prompt_command () {
     local DKGRAY="\[\033[1;30m\]"
     local WHITE="\[\033[1;37m\]"
     local RED="\[\033[0;31m\]"
+    local YELLOW="\[\033[1;33m\]"
     # return color to Terminal setting for text color
     local DEFAULT="\[\033[0;39m\]"
     # set the titlebar to the last 2 fields of pwd
     local TITLEBAR='\[\e]2;`pwdtail`\a'
+    
+    if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
+       
+        if [[ $git_status =~ "working directory clean" ]]; then
+            BRANCH="\$(__git_ps1 '${BLUE}[%s] ')"
+        elif [[ $git_status =~ "Your branch is ahead of" ]]; then
+            BRANCH="\$(__git_ps1 '${YELLOW}[%s]  ')"
+        elif [[ $git_status =~ "nothing to commit" ]]; then
+            BRANCH="\$(__git_ps1 '${GREEN}[%s] ')"
+        else
+            BRANCH="\$(__git_ps1 '${RED}[%s] ')"
+        fi 
+    fi
+    
+    
     export PS1="\[${TITLEBAR}\]${CYAN}[ ${BCYAN}\u${GREEN}@${BCYAN}\
-\h${DKGRAY}(${LOAD}) ${WHITE}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
-\w\n${GREEN}${BRANCH}${DEFAULT}$ "
+\h${DKGRAY}(${LOAD}) ${RED}${TIME} ${CYAN}]${RED}$ERRPROMPT${GRAY}\
+\w ${GREEN}${BRANCH}${DEFAULT}\n$ "
 }
 PROMPT_COMMAND=prompt_command
 
-fmt_time () { #format time just the way I likes it
-    if [ `date +%p` = "PM" ]; then
-        meridiem="pm"
-    else
-        meridiem="am"
-    fi
-    date +"%l:%M:%S$meridiem"|sed 's/ //g'
+
+fmt_time () { #format time just the way I like
+    date +"%H:%M"|sed 's/ //g'
 }
 pwdtail () { #returns the last 2 fields of the working directory
     pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
@@ -192,6 +202,10 @@ alias sudo="sudo "
 alias rns="react-native start"
 alias rna="react-native run-android"
 alias rnl="react-native log-android"
+
+# Tmux
+alias kaw='tmux kill-server && tmux'
+
 
 
 ## Shortcuts System Specific
