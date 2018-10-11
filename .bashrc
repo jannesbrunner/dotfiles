@@ -139,11 +139,11 @@ prompt_command () {
     local GREEN="\[\033[0;32m\]"
     local CYAN="\[\033[0;36m\]"
     local BCYAN="\[\033[1;36m\]"
-    local BLUE="\[\033[0;34m\]"
+    local BLUE="\[\033[1;34m\]"
     local GRAY="\[\033[0;37m\]"
     local DKGRAY="\[\033[1;30m\]"
     local WHITE="\[\033[1;37m\]"
-    local RED="\[\033[0;31m\]"
+    local RED="\[\033[1;31m\]"
     local YELLOW="\[\033[1;33m\]"
     # return color to Terminal setting for text color
     local DEFAULT="\[\033[0;39m\]"
@@ -153,13 +153,13 @@ prompt_command () {
     if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
        
         if [[ $git_status =~ "working directory clean" ]]; then
-            BRANCH="\$(__git_ps1 '${BLUE}[%s] ')"
+            BRANCH="\$(__git_ps1 '${BLUE}[%s]')"
         elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-            BRANCH="\$(__git_ps1 '${YELLOW}[%s]  ')"
+            BRANCH="\$(__git_ps1 '${YELLOW}[%s]')"
         elif [[ $git_status =~ "nothing to commit" ]]; then
-            BRANCH="\$(__git_ps1 '${GREEN}[%s] ')"
+            BRANCH="\$(__git_ps1 '${GREEN}[%s]')"
         else
-            BRANCH="\$(__git_ps1 '${RED}[%s] ')"
+            BRANCH="\$(__git_ps1 '${RED}[%s]')"
         fi 
     fi
     
