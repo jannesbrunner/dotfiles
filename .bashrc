@@ -258,6 +258,9 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    export PATH=/home/jay/apps/anaconda3/bin:$PATH
    # Add RVM to PATH for scripting. (Ruby Version management)
    export PATH="$PATH:$HOME/.rvm/bin"
+   # Add GO Language to Path
+   export PATH=$PATH:/usr/local/go/bin
+
    
 else
    echo This machine is unknown.
