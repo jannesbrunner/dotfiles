@@ -197,6 +197,7 @@ PROMPT_DIRTRIM=3
 alias home="cd ~"
 alias lst="tree -L 1"
 alias sudo="sudo "
+alias aliasgit="git config --get-regexp alias"
 
 # react-native
 alias rns="react-native start"
