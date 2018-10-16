@@ -241,7 +241,8 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
    alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
-   
+   alias scc='dbus-send --print-reply --dest=com.deepin.dde.ControlCenter /com/deepin/dde/ControlCenter com.deepin.dde.ControlCenter.Show'
+
    # Berlinale
    alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
    alias fmsui-stop='nginx -s stop'
