@@ -242,6 +242,7 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
    alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
    alias scc='dbus-send --print-reply --dest=com.deepin.dde.ControlCenter /com/deepin/dde/ControlCenter com.deepin.dde.ControlCenter.Show'
+   alias updatecode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb'
 
    # Berlinale
    alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
@@ -273,6 +274,8 @@ fi
 
 # Set bash language to English
 export LANG=en_US.UTF-8
+
+
 
 
 
