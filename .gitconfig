@@ -5,6 +5,7 @@
 	default = matching
 [core]
 	whitespace = cr-at-eol
+	editor = code --wait
 [alias]
 	lo = log --oneline --graph
 	ss = status --short
@@ -16,21 +17,17 @@
 	sut = --set-upstream-to	
 [credential]
 	helper = cache
-[merge]
-	tool = meld
 
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [mergetool]
 	keepBackup = false	
-
-[mergetool "meld"]
-	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
-	keepBackup = false
-	
-[difftool]
-	prompt = false
-
-[difftool "meld"]
-	cmd = meld "$LOCAL" "$REMOTE"
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 	
 [color]
 	ui = auto
