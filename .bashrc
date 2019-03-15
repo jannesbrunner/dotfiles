@@ -169,7 +169,7 @@ elif [ $HOSTNAME == 'JB-Desktop' ]; then
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'    	
   	
 
-elif [ $HOSTNAME == 'jbx1carbon' ]; then
+elif [ $HOSTNAME == 'jay-x1' ]; then
    echo $USER @ $HOSTNAME
    
    # Aliases
