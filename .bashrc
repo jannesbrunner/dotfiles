@@ -189,9 +189,6 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    # Berlinale
    alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
    alias fmsui-stop='nginx -s stop'
-
-   # Git Prompt
-   source /usr/share/git-core/contrib/completion/git-prompt.sh
    
    ### Path ###
    # Add Android tools to Path
