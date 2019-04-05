@@ -169,13 +169,11 @@ elif [ $HOSTNAME == 'JB-Desktop' ]; then
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'    	
   	
 
-elif [ $HOSTNAME == 'jay-x1' ]; then
+elif [ $HOSTNAME == 'jbx1carbon' ]; then
    echo $USER @ $HOSTNAME
    
    # Aliases
-   alias androidstudio="cd $HOME && xhost + && sudo apps/android-studio/bin/studio.sh"
    alias db='cd $HOME/Dropbox'
-   alias od='no One Drive installed yet'
    alias cloud='cd $HOME/Nextcloud'
    alias htw='cd $HOME/Nextcloud/Uni'
    alias projects='cd $HOME/Nextcloud/Projekte/'
@@ -184,7 +182,8 @@ elif [ $HOSTNAME == 'jay-x1' ]; then
    alias checkupdates='sudo dnf update && sudo dnf upgrade'   
    alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
    alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
-   alias scc='dbus-send --print-reply --dest=com.deepin.dde.ControlCenter /com/deepin/dde/ControlCenter com.deepin.dde.ControlCenter.Show'
+   
+   # VS Code
    alias updatecode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb'
 
    # Berlinale
