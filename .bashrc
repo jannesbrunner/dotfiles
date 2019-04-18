@@ -201,7 +201,10 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    export PATH="$PATH:$HOME/.rvm/bin"
    # Add GO Language to Path
    export PATH=$PATH:/usr/local/go/bin
-
+elif [ $(hostname) == 'Jays-MacBook-Pro.local' ]; then
+   echo Hello $USER !
+   # Aliases
+   alias db='cd $HOME/Dropbox'
    
 else
    echo This machine is unknown.
