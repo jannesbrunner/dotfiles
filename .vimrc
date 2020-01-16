@@ -5,3 +5,5 @@ nnoremap <C-@> a
 imap <C-@> <Esc>
 set tabstop=4 shiftwidth=4 expandtab
 filetype on
+set nocp
+set ignorecase
