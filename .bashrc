@@ -133,6 +133,10 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+# automatically piping ls -la to more
+ls() { if [[ $@ == "-la" ]]; then command ls -la | more; else command ls "$@"; fi; }
+
+
 # For shortcutting the dir display
 PROMPT_DIRTRIM=3 
 
@@ -201,10 +205,17 @@ elif [ $HOSTNAME == 'jbx1carbon' ]; then
    export PATH="$PATH:$HOME/.rvm/bin"
    # Add GO Language to Path
    export PATH=$PATH:/usr/local/go/bin
-elif [ $(hostname) == 'Jays-MacBook-Pro.local' ]; then
+elif [ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]; then
    echo Hello $USER !
    # Aliases
    alias db='cd $HOME/Dropbox'
+   alias cloud='cd $HOME/MEGA'
+   alias htw='cd $HOME/MEGA/Uni'
+   alias projects='cd $HOME/MEGA/Projekte/'
+   alias projekte='cd $HOME/MEGA/Projekte/'
+   alias updateos='brew update'
+   alias upgradeos='brew upgrade'
+   alias install='brew cask install'
    
 else
    echo This machine is unknown.
