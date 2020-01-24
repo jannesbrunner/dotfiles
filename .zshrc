@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "%(SHELL=/bin/zsh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/zsh lesspipe)"
 
 
 # You may need to manually set your language environment
@@ -137,23 +137,14 @@ alias sudo="sudo "
 alias aliasgit="git config --get-regexp alias"
 ## Shortcuts System Specific
 
-if [[ $(HOSTNAME) == 'v22018035923162686' ]]; then
-   echo $USER @ $(HOSTNAME) 
+if [[ $(hostname) == 'v22018035923162686' ]]; then
+   echo $USER @ $(hostname) 
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
    alias dailylog='sudo logwatch --detail low --range today'
-   alias weeklylog='sudo logwatch --detail low --range "-7 days"'     
+   alias weeklylog='sudo logwatch --detail low --range "-7 days"'       	
 
-elif [[ $(HOSTNAME) == 'JB-Desktop' ]]; then
-   echo $USER @ $(HOSTNAME) 
-   alias db='cd /mnt/d/Dropbox/'
-   alias od='cd /mnt/d/OneDrive/'
-   alias htw='cd /mnt/d/Dropbox/HTW/Semester5'
-   alias wpd='cd /mnt/d/Dropbox/projekte/'
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'    	
-  	
-
-elif [[ $(HOSTNAME) == 'jbx1carbon' ]]; then
-   echo $USER @ $(HOSTNAME)
+elif [[ $(hostname) == 'jbx1carbon' ]]; then
+   echo $USER @ $(hostname)
    
    # Aliases
    alias db='cd $HOME/Dropbox'
@@ -195,7 +186,20 @@ elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    alias updateos='brew update'
    alias upgradeos='brew upgrade'
    alias install='brew cask install'
-   
+
+elif [[ $(hostname) == 'JB-Desktop' ]]; then
+   echo Hello $USER !
+   # Aliases
+   alias winhome='cd /mnt/c/Users/Jay'
+   alias db='cd /mnt/d/Dropbox'
+   alias cloud='cd /mnt/e/MEGA'
+   alias htw='cd /mnt/e/MEGA/Uni'
+   alias projects='cd /mnt/e/MEGA/Projekte/'
+   alias projekte='cd /mnt/e/MEGA/Projekte/'
+   alias updateos='sudo apt update'
+   alias upgradeos='sudo apt upgrade'
+   alias install='sudo apt install'
+
 else
    echo This machine is unknown.
 fi
