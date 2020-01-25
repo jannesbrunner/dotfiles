@@ -9,5 +9,7 @@
     "hg",
     "jobs",
     "root"
-  ]
+  ],
+  "mode": "patched", 
+  "fontFamily": "Source Code Pro for Powerline"
 }
