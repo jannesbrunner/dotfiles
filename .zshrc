@@ -12,7 +12,7 @@ export ZSH="/home/jay/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="wezm"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,45 +77,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/zsh lesspipe)"
-
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='mvim'
-fi
-
-# PS1 Settings 
-    # PowerLine Shell
-    # See: https://github.com/b-ryan/powerline-shell
-   function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
-
-# automatically piping ls -la to more
-# ls() { if [[ $@ == "-la" ]]; then command ls -la | more; else command ls "$@"; fi; }
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -196,6 +157,7 @@ elif [[ $(hostname) == 'JB-Desktop' ]]; then
    alias htw='cd /mnt/e/MEGA/Uni'
    alias projects='cd /mnt/e/MEGA/Projekte/'
    alias projekte='cd /mnt/e/MEGA/Projekte/'
+   alias learning='cd /mnt/e/MEGA/Projekte/learning'
    alias updateos='sudo apt update'
    alias upgradeos='sudo apt upgrade'
    alias install='sudo apt install'
@@ -207,3 +169,7 @@ fi
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
