@@ -6,7 +6,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jay/.oh-my-zsh"
+# export ZSH="/home/jay/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -99,14 +99,18 @@ alias aliasgit="git config --get-regexp alias"
 ## Shortcuts System Specific
 
 if [[ $(hostname) == 'v22018035923162686' ]]; then
-   echo $USER @ $(hostname) 
+   echo $USER @ $(hostname)
+   # Path to your oh-my-zsh installation.
+   export ZSH="/home/jannes/.oh-my-zsh"
+   source $ZSH/oh-my-zsh.sh
    alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
    alias dailylog='sudo logwatch --detail low --range today'
    alias weeklylog='sudo logwatch --detail low --range "-7 days"'       	
 
 elif [[ $(hostname) == 'jbx1carbon' ]]; then
    echo $USER @ $(hostname)
-   
+   export ZSH="/home/jay/.oh-my-zsh"
+   source $ZSH/oh-my-zsh.sh
    # Aliases
    alias db='cd $HOME/Dropbox'
    alias cloud='cd $HOME/Nextcloud'
@@ -138,6 +142,8 @@ elif [[ $(hostname) == 'jbx1carbon' ]]; then
    export PATH=$PATH:/usr/local/go/bin
 elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    echo Hello $USER !
+   export ZSH="/users/jannes/.oh-my-zsh"
+   source $ZSH/oh-my-zsh.sh
    # Aliases
    alias db='cd $HOME/Dropbox'
    alias cloud='cd $HOME/MEGA'
@@ -150,6 +156,8 @@ elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
 
 elif [[ $(hostname) == 'JB-Desktop' ]]; then
    echo Hello $USER !
+   export ZSH="/home/jay/.oh-my-zsh"
+   source $ZSH/oh-my-zsh.sh
    # Aliases
    alias winhome='cd /mnt/c/Users/Jay'
    alias db='cd /mnt/d/Dropbox'
