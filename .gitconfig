@@ -1,11 +1,13 @@
 [user]
-	email = jannes.brunner@student.htw-berlin.de
-	name = jannesbrunner
+	email = jannes.brunner@oo-services.com
+	name = Jannes Brunner
 [push]
 	default = matching
 [core]
 	whitespace = cr-at-eol
 	editor = code --wait
+	autocrlf = true
+	excludesfile = C:\\Users\\JannesBrunner\\Documents\\gitignore_global.txt
 [alias]
 	lo = log --oneline --graph
 	ss = status --short
@@ -16,7 +18,7 @@
 	branchvv = branch -vv
 	sut = --set-upstream-to	
 [credential]
-	helper = cache
+	helper = wincred
 
 [merge]
     tool = vscode
@@ -47,3 +49,15 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[credential "helperselector"]
+	selected = wincred
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

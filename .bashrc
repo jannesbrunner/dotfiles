@@ -1,23 +1,13 @@
-# Enable tmux
-if command -v tmux>/dev/null; then
-    if [ ! -z "$PS1" ]; then # unless shell not loaded interactively, run tmux
-                [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
-    fi
- fi
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[ -z "$PS1" ] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -30,15 +20,11 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
@@ -112,129 +98,6 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
-  fi
 fi
-
-## Personal config for the bash ##
-
-# PS1 Settings 
-    # PowerLine Shell
-    # See: https://github.com/b-ryan/powerline-shell
-    function _update_ps1() {
-    PS1=$(powerline-shell $?)
-    }
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-# automatically piping ls -la to more
-ls() { if [[ $@ == "-la" ]]; then command ls -la | more; else command ls "$@"; fi; }
-
-
-# For shortcutting the dir display
-PROMPT_DIRTRIM=3 
-
-## Shortcuts
-alias home="cd ~"
-alias lst="tree -L 1"
-alias sudo="sudo "
-alias aliasgit="git config --get-regexp alias"
-
-# react-native
-alias rns="react-native start"
-alias rna="react-native run-android"
-alias rnl="react-native log-android"
-
-# Tmux
-alias kaw='tmux kill-server && tmux'
-
-
-
-## Shortcuts System Specific
-
-if [ $HOSTNAME == 'v22018035923162686' ]; then
-   echo $USER @ $HOSTNAME 
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
-   alias dailylog='sudo logwatch --detail low --range today'
-   alias weeklylog='sudo logwatch --detail low --range "-7 days"'     
-
-elif [ $HOSTNAME == 'JB-Desktop' ]; then
-   echo $USER @ $HOSTNAME 
-   alias db='cd /mnt/d/Dropbox/'
-   alias od='cd /mnt/d/OneDrive/'
-   alias htw='cd /mnt/d/Dropbox/HTW/Semester5'
-   alias wpd='cd /mnt/d/Dropbox/projekte/'
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'    	
-  	
-
-elif [ $HOSTNAME == 'jbx1carbon' ]; then
-   echo $USER @ $HOSTNAME
-   
-   # Aliases
-   alias db='cd $HOME/Dropbox'
-   alias cloud='cd $HOME/Nextcloud'
-   alias htw='cd $HOME/Nextcloud/Uni'
-   alias projects='cd $HOME/Nextcloud/Projekte/'
-   alias projekte='cd $HOME/Nextcloud/Projekte/'
-   alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
-   alias checkupdates='sudo dnf update && sudo dnf upgrade'   
-   alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
-   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
-   
-   # VS Code
-   alias updatecode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb'
-
-   # Berlinale
-   alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
-   alias fmsui-stop='nginx -s stop'
-   
-   ### Path ###
-   # Add Android tools to Path
-   export ANDROID_HOME=$HOME/Android/Sdk
-   export PATH=$PATH:$ANDROID_HOME/tools
-   export PATH=$PATH:$ANDROID_HOME/platform-tools
-   # Add Python Anaconda to Path
-   export PATH=/home/jay/apps/anaconda3/bin:$PATH
-   # Add RVM to PATH for scripting. (Ruby Version management)
-   export PATH="$PATH:$HOME/.rvm/bin"
-   # Add GO Language to Path
-   export PATH=$PATH:/usr/local/go/bin
-elif [ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]; then
-   echo Hello $USER !
-   # Aliases
-   alias db='cd $HOME/Dropbox'
-   alias cloud='cd $HOME/MEGA'
-   alias htw='cd $HOME/MEGA/Uni'
-   alias projects='cd $HOME/MEGA/Projekte/'
-   alias projekte='cd $HOME/MEGA/Projekte/'
-   alias updateos='brew update'
-   alias upgradeos='brew upgrade'
-   alias install='brew cask install'
-   
-else
-   echo This machine is unknown.
-fi
-
-# This is for tracking dot files. Thanks to Nicola Paolucci. Check:
-# https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-  alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# Set bash language to English
-export LANG=en_US.UTF-8
-
-
-
-
-
-
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
