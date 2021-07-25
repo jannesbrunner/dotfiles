@@ -1,7 +1,8 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module DockerCompletion
-Set-Theme Paradox
+
+Set-PoshPrompt -Theme ~/.jay.omp.json
 
 # Functions / Aliases
 function config { 

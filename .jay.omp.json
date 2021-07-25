@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "cyan",
+          "properties": {
+            "postfix": "",
+            "prefix": "",
+            "wsl": "",
+            "wsl_separator": ""
+          },
+          "style": "powerline",
+          "type": "os"
+        },
+        {
+          "foreground": "darkGray",
+          "properties": {
+            "style": "mixed",
+            "mixed_threshold": 4,
+            "home_icon": "\uFB9F",
+            "enable_hyperlink": "true"
+        },
+          "style": "diamond",
+          "type": "path"
+        },
+        {
+          "foreground": "lightYellow",
+          "properties": {
+            "postfix": "<lightBlue>)</>",
+            "prefix": ":: <lightBlue>git(</>"
+          },
+          "style": "plain",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "#68a063",
+          "properties": {
+            "display_mode": "files",
+            "display_package_manager": true,
+            "display_version": true,
+            "npm_icon": "/npm",
+            "postfix": "",
+            "prefix": " ",
+            "yarn_icon": "/yarn"
+          },
+          "style": "plain",
+          "type": "node"
+        },
+        {
+          "foreground": "#4063D8",
+          "properties": {
+            "display_mode": "files",
+            "display_version": true,
+            "postfix": "",
+            "prefix": " "
+          },
+          "style": "plain",
+          "type": "crystal"
+        },
+        {
+          "foreground": "#DE3F24",
+          "properties": {
+            "display_mode": "files",
+            "display_version": true,
+            "postfix": "",
+            "prefix": " "
+          },
+          "style": "plain",
+          "type": "ruby"
+        },
+        {
+          "foreground": "#FED142",
+          "properties": {
+            "display_mode": "context",
+            "display_version": true,
+            "display_virtual_env": false,
+            "postfix": "",
+            "prefix": " "
+          },
+          "style": "plain",
+          "type": "python"
+        },
+        {
+          "foreground": "lightGreen",
+          "style": "plain",
+          "type": "time"
+        },
+        {
+          "type": "spotify",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#89ff02",
+          "background": "#000000",
+          "properties": {
+            "prefix": "\uF9C6 ",
+            "playing_icon": "\uE602 ",
+            "paused_icon": "\uF8E3 ",
+            "stopped_icon": "\uF04D ",
+            "track_separator" : " - "
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "lightGreen",
+          "properties": {
+            "always_enabled": true,
+            "display_exit_code": false,
+            "error_color": "red",
+            "prefix": "➜"
+          },
+          "style": "powerline",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
+    }
+  ]
+}
