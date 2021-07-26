@@ -45,4 +45,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 As the alias is defined in the profile changes can easily get tracked:
 - See status of tracked config files: `config status`
 - Add new files / changes: `config add <file>`
+- To track changes to already know config files, add & commit via shorthandle `config commit -am "<message>"` comes handy
 - Use all known git commands with `config` as alias
