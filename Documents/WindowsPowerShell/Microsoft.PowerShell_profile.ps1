@@ -16,6 +16,5 @@ function config {
 
 # Start Docker Desktop
 function start-dd {
-    Set-Location -Path "C:\Program Files\Docker\Docker"
-    & '.\Docker Desktop.exe'
+    & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
