@@ -6,9 +6,17 @@ Set-PoshPrompt -Theme ~/.jay.omp.json
 
 Enable-PoshTooltips
 
-# Functions / Aliases
+
+## Alias Functions ##
+
+# Git Config Bare Repo alias
 function config { 
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args
+}
+
+# Start Docker Desktop
+function start-dd {
+    & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
 
 function change-dir {
@@ -36,8 +44,16 @@ function change-dir {
     }
 }
 
+# touch alias
+Set-Alias -Name touch -Value New-Item
+
 # use own cd alias
 Set-Alias -Name cd -Value change-dir -Option AllScope
 
 # touch alias
 Set-Alias -Name touch -Value New-Item
+
+
+
+
+
