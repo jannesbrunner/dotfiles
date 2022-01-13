@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Install oh my zsh
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -12,7 +19,7 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="wezm"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -142,17 +149,15 @@ elif [[ $(hostname) == 'jbx1carbon' ]]; then
    export PATH=$PATH:/usr/local/go/bin
 elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    echo Hello $USER !
-   export ZSH="/users/jannes/.oh-my-zsh"
+   export ZSH="/users/jay/.oh-my-zsh"
    source $ZSH/oh-my-zsh.sh
    # Aliases
    alias db='cd $HOME/Dropbox'
    alias cloud='cd $HOME/MEGA'
-   alias htw='cd $HOME/MEGA/Uni'
    alias projects='cd $HOME/MEGA/Projekte/'
    alias projekte='cd $HOME/MEGA/Projekte/'
    alias updateos='brew update'
    alias upgradeos='brew upgrade'
-   alias install='brew cask install'
 
 elif [[ $(hostname) == 'JB-Desktop' ]]; then
    echo Hello $USER !
@@ -178,6 +183,11 @@ fi
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+
+# Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
