@@ -103,52 +103,11 @@ alias home="cd ~"
 alias lst="tree -L 1"
 alias sudo="sudo "
 alias aliasgit="git config --get-regexp alias"
-## Shortcuts System Specific
 
-if [[ $(hostname) == 'v22018035923162686' ]]; then
-   echo $USER @ $(hostname)
-   # Path to your oh-my-zsh installation.
-   export ZSH="/home/jannes/.oh-my-zsh"
-   source $ZSH/oh-my-zsh.sh
-   alias checkupdates='sudo apt-get update && sudo apt-get upgrade'
-   alias dailylog='sudo logwatch --detail low --range today'
-   alias weeklylog='sudo logwatch --detail low --range "-7 days"'       	
+## Shortcuts System Specific ##
 
-elif [[ $(hostname) == 'jbx1carbon' ]]; then
-   echo $USER @ $(hostname)
-   export ZSH="/home/jay/.oh-my-zsh"
-   source $ZSH/oh-my-zsh.sh
-   # Aliases
-   alias db='cd $HOME/Dropbox'
-   alias cloud='cd $HOME/Nextcloud'
-   alias htw='cd $HOME/Nextcloud/Uni'
-   alias projects='cd $HOME/Nextcloud/Projekte/'
-   alias projekte='cd $HOME/Nextcloud/Projekte/'
-   alias mapper='cd $HOME/Dropbox/HTW/Semester5/projekt/bp-htw-mapper'
-   alias checkupdates='sudo dnf update && sudo dnf upgrade'   
-   alias hdon='gsettings set org.gnome.desktop.interface text-scaling-factor 1.6'	
-   alias hdoff='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
-   
-   # VS Code
-   alias updatecode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb'
-
-   # Berlinale
-   alias fmsui-start='nginx -c /home/jay/Documents/berlinale/nginx_fms_ui.conf -p /home/jay/Documents/berlinale/git/fms-ui'
-   alias fmsui-stop='nginx -s stop'
-   
-   ### Path ###
-   # Add Android tools to Path
-   export ANDROID_HOME=$HOME/Android/Sdk
-   export PATH=$PATH:$ANDROID_HOME/tools
-   export PATH=$PATH:$ANDROID_HOME/platform-tools
-   # Add Python Anaconda to Path
-   export PATH=/home/jay/apps/anaconda3/bin:$PATH
-   # Add RVM to PATH for scripting. (Ruby Version management)
-   export PATH="$PATH:$HOME/.rvm/bin"
-   # Add GO Language to Path
-   export PATH=$PATH:/usr/local/go/bin
-elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
-   echo Hello $USER !
+# Apple MacOS
+if [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    export ZSH="/users/jay/.oh-my-zsh"
    source $ZSH/oh-my-zsh.sh
    # Aliases
@@ -158,9 +117,14 @@ elif [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    alias projekte='cd $HOME/MEGA/Projekte/'
    alias updateos='brew update'
    alias upgradeos='brew upgrade'
+   # python3 fix
+   alias python='/opt/homebrew/bin/python3'
+   # make vs-code available in terminal
+   code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+;}   
 
+# WSL2 on Windows 10/11:
 elif [[ $(hostname) == 'JB-Desktop' ]]; then
-   echo Hello $USER !
    export ZSH="/home/jay/.oh-my-zsh"
    source $ZSH/oh-my-zsh.sh
    # Aliases
