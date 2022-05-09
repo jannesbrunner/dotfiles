@@ -1,13 +1,14 @@
-[user]
-	email = mail@jannesbrunner.de
-	name = Jannes Brunner
+[includeIf "gitdir:~/Documents/work/"]
+  path = ~/.gitconfig-work
+[includeIf "gitdir:~/Documents/private/"]
+  path = ~/.gitconfig-personal
 [push]
 	default = matching
 [core]
 	whitespace = cr-at-eol
 	editor = code --wait
 	autocrlf = true
-	excludesfile = C:\\Users\\JannesBrunner\\Documents\\gitignore_global.txt
+	excludesfile = /Users/jay/.gitignore_global
 [alias]
 	lo = log --oneline --graph
 	ss = status --short
@@ -17,8 +18,6 @@
 	fetcha = fetch --all --prune
 	branchvv = branch -vv
 	sut = --set-upstream-to	
-[credential]
-	helper = wincred
 
 [merge]
     tool = vscode
@@ -50,9 +49,10 @@
 	changed = green
 	untracked = cyan
 [difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-	cmd = "'' "
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [credential "helperselector"]
 	selected = wincred
@@ -61,3 +61,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main
+
+
