@@ -1,3 +1,6 @@
+[user]
+	email = mail@jannesbrunner.de
+	name = Jannes Brunner
 [includeIf "gitdir:~/Documents/work/"]
   path = ~/.gitconfig-work
 [includeIf "gitdir:~/Documents/private/"]
