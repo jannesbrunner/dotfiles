@@ -111,10 +111,14 @@ if [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    export ZSH="/users/jay/.oh-my-zsh"
    source $ZSH/oh-my-zsh.sh
    # Aliases
-   alias db='cd $HOME/Dropbox'
+   alias db='cd $HOME/SynologyDrive'
    alias cloud='cd $HOME/MEGA'
-   alias projects='cd $HOME/MEGA/Projekte/'
-   alias projekte='cd $HOME/MEGA/Projekte/'
+   alias projects='cd $HOME/Documents/private'
+   alias projekte='cd $HOME/Documents/private/'
+   alias ouo='cd $HOME/Documents/work'
+   alias jbns='cd $HOME/Documents/jbns'
+   alias haustegel="cd $HOME/Documents/Tegel"
+   
    alias updateos='brew update'
    alias upgradeos='brew upgrade'
    # python3 fix
