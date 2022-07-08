@@ -10,7 +10,8 @@
 [core]
 	whitespace = cr-at-eol
 	editor = code --wait
-	autocrlf = true
+	# https://stackoverflow.com/questions/5834014/lf-will-be-replaced-by-crlf-in-git-what-is-that-and-is-it-important
+	autocrlf = input
 	excludesfile = /Users/jay/.gitignore_global
 [alias]
 	lo = log --oneline --graph
