@@ -101,3 +101,4 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+source /Users/jay/.docker/init-bash.sh || true # Added by Docker Desktop

@@ -159,3 +159,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+function_toggleMouseScroll () {
+    if [ $(defaults read -g com.apple.swipescrolldirection) = 1 ]; then
+        defaults write -g com.apple.swipescrolldirection -bool false
+        echo "Mouse Scroll Natural"
+    else
+        defaults write -g com.apple.swipescrolldirection -bool true
+        echo "Mouse Scroll Inverted"
+    fi
+}
+source /Users/jay/.docker/init-zsh.sh || true # Added by Docker Desktop
