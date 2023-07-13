@@ -53,7 +53,7 @@ Set-Alias -Name cd -Value change-dir -Option AllScope
 # touch alias
 Set-Alias -Name touch -Value New-Item
 
-
-
+# fast node version manager (fnm)
+fnm env --use-on-cd | Out-String | Invoke-Expression
 
 
