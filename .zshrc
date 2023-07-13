@@ -133,12 +133,7 @@ elif [[ $(hostname) == 'JB-Desktop' ]]; then
    source $ZSH/oh-my-zsh.sh
    # Aliases
    alias winhome='cd /mnt/c/Users/Jay'
-   alias db='cd /mnt/d/Dropbox'
-   alias cloud='cd /mnt/e/MEGA'
-   alias htw='cd /mnt/e/MEGA/Uni'
-   alias projects='cd /mnt/e/MEGA/Projekte/'
-   alias projekte='cd /mnt/e/MEGA/Projekte/'
-   alias learning='cd /mnt/e/MEGA/Projekte/learning'
+   alias db='cd /mnt/d/Dropbox'   
    alias updateos='sudo apt update'
    alias upgradeos='sudo apt upgrade'
    alias install='sudo apt install'
@@ -170,3 +165,19 @@ function_toggleMouseScroll () {
     fi
 }
 source /Users/jay/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
