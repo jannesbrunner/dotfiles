@@ -57,3 +57,11 @@ Set-Alias -Name touch -Value New-Item
 fnm env --use-on-cd | Out-String | Invoke-Expression
 
 
+
+#region conda initialize
+# !! Contents within this block are managed by 'conda init' !!
+If (Test-Path "C:\Users\mail\mambaforge\Scripts\conda.exe") {
+    (& "C:\Users\mail\mambaforge\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
+}
+#endregion
+
