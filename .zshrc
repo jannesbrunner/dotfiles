@@ -107,7 +107,6 @@ alias aliasgit="git config --get-regexp alias"
 ## Shortcuts System Specific ##
 
 # Apple MacOS
-if [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    export ZSH="/users/jay/.oh-my-zsh"
    source $ZSH/oh-my-zsh.sh
    # Aliases
@@ -121,26 +120,9 @@ if [[ $(hostname | grep -o Jays-MBP) == 'Jays-MBP' ]]; then
    
    alias updateos='brew update'
    alias upgradeos='brew upgrade'
-   # python3 fix
-   alias python='/opt/homebrew/bin/python3'
    # make vs-code available in terminal
    code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
 ;}   
-
-# WSL2 on Windows 10/11:
-elif [[ $(hostname) == 'JB-Desktop' ]]; then
-   export ZSH="/home/jay/.oh-my-zsh"
-   source $ZSH/oh-my-zsh.sh
-   # Aliases
-   alias winhome='cd /mnt/c/Users/Jay'
-   alias db='cd /mnt/d/Dropbox'   
-   alias updateos='sudo apt update'
-   alias upgradeos='sudo apt upgrade'
-   alias install='sudo apt install'
-
-else
-   echo This machine is unknown.
-fi
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
@@ -186,3 +168,10 @@ fi
 # <<< conda initialize <<<
 
 
+
+# bun completions
+[ -s "/Users/jay/.bun/_bun" ] && source "/Users/jay/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
