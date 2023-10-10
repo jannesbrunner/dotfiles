@@ -96,33 +96,32 @@ plugins=(git)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+
+
+export ZSH="/users/jay/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+# Aliases
+alias db='cd $HOME/SynologyDrive'
+alias cloud='cd $HOME/MEGA'
+alias projects='cd $HOME/Documents/private'
+alias projekte='cd $HOME/Documents/private/'
+alias ouo='cd $HOME/Documents/work'
+alias jbns='cd $HOME/Documents/jbns'
+alias haustegel="cd $HOME/Documents/Tegel"
+
+alias updateos='brew update'
+alias upgradeos='brew upgrade'
+# make vs-code available in terminal
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+;}   
+
+alias ls='exa --icons --group-directories-first'
+alias ll='exa -l --icons --no-user --group-directories-first  --time-style long-iso'
+alias la='exa -la --icons --no-user --group-directories-first  --time-style long-iso'
 alias home="cd ~"
 alias lst="tree -L 1"
 alias sudo="sudo "
 alias aliasgit="git config --get-regexp alias"
-
-## Shortcuts System Specific ##
-
-# Apple MacOS
-   export ZSH="/users/jay/.oh-my-zsh"
-   source $ZSH/oh-my-zsh.sh
-   # Aliases
-   alias db='cd $HOME/SynologyDrive'
-   alias cloud='cd $HOME/MEGA'
-   alias projects='cd $HOME/Documents/private'
-   alias projekte='cd $HOME/Documents/private/'
-   alias ouo='cd $HOME/Documents/work'
-   alias jbns='cd $HOME/Documents/jbns'
-   alias haustegel="cd $HOME/Documents/Tegel"
-   
-   alias updateos='brew update'
-   alias upgradeos='brew upgrade'
-   # make vs-code available in terminal
-   code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
-;}   
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
