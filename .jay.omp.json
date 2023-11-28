@@ -59,7 +59,7 @@
             "display_version": true,
             "npm_icon": "/npm",
             "postfix": "",
-            "prefix": " ",
+            "prefix": " ",
             "yarn_icon": "/yarn"
           },
           "style": "plain",
@@ -92,9 +92,10 @@
           "properties": {
             "display_mode": "context",
             "display_version": true,
-            "display_virtual_env": false,
+            "display_virtual_env": true,
+            "template": "  {{ .Full }} ",
             "postfix": "",
-            "prefix": " "
+            "prefix": " "
           },
           "style": "plain",
           "type": "python"
