@@ -52,8 +52,9 @@ Set-Alias -Name cd -Value change-dir -Option AllScope
 
 # touch alias
 Set-Alias -Name touch -Value New-Item
+# O&O Partner Web Projekt quick commands:
+Import-Module -DisableNameChecking D:\projekte\ooweb-partnerweb\oopw-commands.psm1
+# O&O Web Projekt quick commands:
+Import-Module -DisableNameChecking D:\projekte\ooweb-web\ooweb-commands.psm1
 
-
-
-
-
+Import-Module 'gsudoModule'
