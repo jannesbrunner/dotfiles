@@ -1,5 +1,5 @@
 [user]
-	email = mail@jannesbrunner.de
+	email = jannes.brunner@oo-services.com
 	name = Jannes Brunner
 [push]
 	default = matching
@@ -7,7 +7,6 @@
 	whitespace = cr-at-eol
 	editor = code --wait
 	autocrlf = true
-	excludesfile = C:\\Users\\JannesBrunner\\Documents\\gitignore_global.txt
 [alias]
 	lo = log --oneline --graph
 	ss = status --short
@@ -61,3 +60,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[safe]
+	directory = C:/xampp/htdocs
