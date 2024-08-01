@@ -115,9 +115,9 @@ alias upgradeos='brew upgrade'
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
 ;}   
 
-alias ls='exa --icons --group-directories-first'
-alias ll='exa -l --icons --no-user --group-directories-first  --time-style long-iso'
-alias la='exa -la --icons --no-user --group-directories-first  --time-style long-iso'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -l --icons --no-user --group-directories-first  --time-style long-iso'
+alias la='eza -la --icons --no-user --group-directories-first  --time-style long-iso'
 alias home="cd ~"
 alias lst="tree -L 1"
 alias sudo="sudo "
@@ -125,8 +125,12 @@ alias aliasgit="git config --get-regexp alias"
 
 # This is for tracking dot files. Thanks to Nicola Paolucci. Check:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-  alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# fish style auto suggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(mcfly init zsh)"
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
