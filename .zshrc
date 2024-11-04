@@ -100,6 +100,7 @@ plugins=(git)
 
 export ZSH="/users/jay/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+source /users/jay/env-secrets.sh # Load secret environment variables
 # Aliases
 alias db='cd $HOME/SynologyDrive'
 alias cloud='cd $HOME/MEGA'
@@ -178,3 +179,5 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+PATH=~/.console-ninja/.bin:$PATH
