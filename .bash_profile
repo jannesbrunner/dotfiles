@@ -23,3 +23,8 @@ if [ -f "/opt/homebrew/Caskroom/mambaforge/base/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jay/.lmstudio/bin"
+# End of LM Studio CLI section
+
